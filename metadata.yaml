@@ -1,0 +1,33 @@
+_repo: Gladius-Dei--Schwere-Stunde_12053
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Mann, Thomas
+    aliases:
+    - Mann, Paul Thomas
+    - Thomas, Paul
+    birthdate: 1875
+    deathdate: 1955
+    gutenberg_agent_id: '4200'
+    url: http://www.gutenberg.org/2009/agents/4200
+    wikipedia: http://en.wikipedia.org/wiki/Thomas_Mann
+description: ''
+gutenberg_bookshelf: DE Prosa
+gutenberg_issued: '2004-04-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '12053'
+language: de
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Biographical fiction'
+- !lcsh 'Religious fanaticism -- Fiction'
+- !lcsh 'Short stories'
+- !lcc 'PT'
+- !lcsh 'Munich (Germany) -- Fiction'
+- !lcsh 'Schiller, Friedrich, 1759-1805'
+- GITenberg
+title: Gladius Dei; Schwere Stunde
+url: http://www.gutenberg.org/ebooks/12053
