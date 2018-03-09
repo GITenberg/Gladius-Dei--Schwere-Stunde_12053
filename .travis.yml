@@ -1,0 +1,54 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo -H pip install git+https://github.com/gitenberg-dev/gitberg-build
+- sudo -H pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo -H pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: b4eEXrcZI9/GXeb0lhFfEFGiCxaOlFvKXRqOXu5mw1hr3Rheg+It9ah5fY/a6K2gfJioMb31o+0E4CYvsJPqkgfU+tuT1S1+VvCHpi0Ccq81BhNo/0DoYzL8p1f21Tf+X4LGXQKmtfgWr8BPgE/yu953NpiHtqPdNokJtELG6Y8C52h3BYNO1BTAqpIG7/vS1ZttufhGEWYzjyPjBeajTjK9iGSuwtCn0DSd+kcZrkKa3Vaowm3GtxKGUu9qLLFcRHsV6VjIrZRBct19XPLWj6EHvLzozPmD9RXXEtS8AfJUA8aEi6OzYAilPXUkEsAGKtczWZ0TOOZE5Rsm8iIBu3ILICpWNW1d9jO+i4tIsnibOUnNh7IJqWH1y9VHjc/ZdmUQSFHrD+vi9yO69EcXmU+T3FvAG/Fxdvh2CcPHhm6vmbApN+FEUb6SCwOjbwNERk3VNX7dbGZ/G3iMxdNo23i6Fdaup9BoK53C4pE4yFi74hQDvHR1ybRHBhRHzOz344CvieAnH0JjzOnqc6aGybsX8wFw7upGyMpbOsB1Ii5oN5qO1koQ59pCdOS7E45AhWlp7cNZCu1Ynb4Y/Nr5LJYBvw86jbX3M0rmGsg/ijzlZUoSPz01onhtaQA8gudC4HZ5/meyq7MeiCSO6ERU+p3hjhjJpXSL4uLX+mDb5aQ=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  on:
+    repo: GITenberg/Gladius-Dei--Schwere-Stunde_12053
+    tags: true
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
