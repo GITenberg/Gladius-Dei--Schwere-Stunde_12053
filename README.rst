@@ -3,7 +3,7 @@ Gladius Dei; Schwere Stunde
 =====================
 
 
-This is a git repository of the source files for the book Gladius Dei; Schwere Stunde by Mann, Thomas. This book is in the Public Domain, see the LICENSE file for details.
+This is a git repository of the source files for the book Gladius Dei; Schwere Stunde by Mann, Thomas. This book is in the Public Domain in the United States, see the LICENSE file for details. This book may not be in the Public Domain in Germany until 2026.
 
 Found an error?
 ===============
